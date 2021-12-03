@@ -1,0 +1,53 @@
++-------------+-------------------------+--------------------------+--------------------+
+| ID          | Username                | Full Name                |       Phone        |
++-------------+-------------------------+--------------------------+--------------------+
+| 7719077170  | raydalio                | Ray Dalio                |    +12038069661    |
+| 3076278844  | urosmihic               | uroš mihić               |   +393388485837    |
+| 8947681     | tyga                    | T-Raww                   |    +13234025545    |
+| 20793110207 | societateaomuluisanatos | SocietateaOmuluiSanatos  |    +40724353372    |
+| 1783260032  | urbanbeatsdaily         | Urban Beats Daily        |   +447904374051    |
+| 15417086    | rocnation               | Roc Nation               |    +19175403445    |
+| 26257709184 | 2db_studio              | 2DB STUDIO FILMS         |    +40723954012    |
+| 243542277   | naomi                   | Naomi Campbell           |    +19179057005    |
+| 8775608206  | actoriedefilm           | Actorie De Film          |    +40738254994    |
+| 4092597394  | sonorofestival          | Festivalul SoNoRo        |    +40751078152    |
+| 7746824417  | ascendischoir           | Ascendis Choir           |    +40724979264    |
+| 3724687     | theacademy              | The Academy              |    +13108599619    |
+| 547532880   | cavotagoomykonos        | Cavo Tagoo Mykonos       |   +302289020260    |
+| 3078593189  | pjalphamusic            | Pablo Ruiz Vargas        |    +14144128067    |
+| 28544316    | xzibit                  | XZIBIT                   |    +13102727728    |
+| 20979117    | aliciakeys              | Alicia Keys              |    +19179702001    |
+| 182589350   | hollywoodreporter       | Hollywood Reporter       |    +13235252000    |
+| 259392477   | mzveegh                 | MzVee                    |    +14693868942    |
+| 462752227   | porsche                 | Porsche                  | <<not-applicable>> |
+| 233828103   | bustarhymes             | Busta Rhymes             |    +17183133630    |
+| 1459940668  | rap                     | Rap by RAPTV             |    +18332403549    |
+| 1750023168  | maringrigore            | Marin Grigore            |    +40721613965    |
+| 507929975   | paulmccartney           | Paul McCartney           |    +12123139547    |
+| 372260767   | carnegiehall            | Carnegie Hall            |    +12122477800    |
+| 362270022   | u2                      | U2                       |    +19175408477    |
+| 301574652   | iacob.octav             | Octavian Iacob           |    +40767171420    |
+| 192297810   | korn_official           | Korn                     |    +13106576161    |
+| 181037639   | amyschumer              |                          |    +19179709333    |
+| 6709619     | therealswizzz           | Swizz Beatz              |    +17188861775    |
+| 561962182   | dgclassics              | Deutsche Grammophon (DG) |   +4949305200701   |
+| 202931842   | aidagarifullina         | AIDA GARIFULLINA         |    +79872909733    |
+| 22797454    | diddy                   | LOVE                     |    +19177461444    |
+| 1074311271  | razdinu                 | Răzvan Dinu              |   +447534114761    |
+| 972227964   | cosminconstant          | Cosmin Constantin        |    +40728763654    |
+| 28478750    | hot97                   | HOT 97                   |    +18002239797    |
+| 1574083     | snoopdogg               | snoopdogg                |    +12132050945    |
+| 7429152080  | gravityrigs             | Alex Turner & Matt Cox   |   +447931338009    |
+| 8338115     | djjazzyjeff             | DJ Jazzy Jeff            |    +13022029610    |
+| 2208713638  | googleartsculture       | Google Arts & Culture    |   +447446904408    |
+| 233482524   | bafta                   | BAFTA                    |   +442072925800    |
+| 14871097    | johnlegend              | John Legend              |    +13103001971    |
+| 305701719   | jlo                     | Jennifer Lopez           |    +13056900379    |
+| 1413053487  | steinwayandsons         | Steinway & Sons          |    +17187212600    |
+| 4839019     | radiox                  | Radio X                  |   +443303333100    |
+| 9454018     | sundanceorg             | The Sundance Institute   |    +14356583456    |
+| 7401336877  | djhorsy                 | DJ HORSE                 |    +4794792411     |
+| 3485608998  | liviupopescu_           | Liviu Popescu            |    +40745366106    |
+| 213684282   | alexgalmeanu            | Alex Galmeanu            |    +40722286871    |
+| 965828      | davidblaine             | David Blaine             |    +16469805888    |
++-------------+-------------------------+--------------------------+--------------------+
