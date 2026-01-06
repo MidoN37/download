@@ -3,10 +3,11 @@ const axios = require('axios');
 const app = express();
 
 // --- CONFIG ---
-const RD_API_KEY = "XP3FCTDMJJR3XCE2MRY6S77SGLVVWCZYDOWN44MFYDLG3T4RCSNQ"; // Replace with your key
+const RD_API_KEY = "XP3FCTDMJJR3XCE2MRY6S77SGLVVWCZYDOWN44MFYDLG3T4RCSNQ"; 
 const MANIFEST_URL = "https://raw.githubusercontent.com/MidoN37/download/master/manifest.json";
+const RENDER_URL = "https://download-dr45.onrender.com";
 
-app.get('/', (req, res) => res.send('Bridge is active. Set FPKGi to use /games.json'));
+app.get('/', (req, res) => res.send('Bridge Active.'));
 
 // 1. Convert GitHub manifest to FPKGi format
 app.get('/games.json', async (req, res) => {
@@ -15,20 +16,16 @@ app.get('/games.json', async (req, res) => {
         const rawData = response.data;
         const fpkgiData = { "DATA": {} };
 
-        // This automatically detects your Render URL
-        const protocol = req.headers['x-forwarded-proto'] || 'http';
-        const host = req.get('host');
-        const baseUrl = `${protocol}://${host}`;
-
         rawData.forEach((item, index) => {
-            const proxyUrl = `${baseUrl}/dl/${index}`;
+            // Hardcoded URL with .pkg extension
+            const proxyUrl = `${RENDER_URL}/dl/${index}/game.pkg`;
             
             fpkgiData["DATA"][proxyUrl] = {
                 "name": item.title,
                 "region": "USA",
                 "version": "1.00",
-                "size": 1048576, // 1MB placeholder
                 "release": "2024",
+                "size": 1000000000, // 1GB in bytes (Integer)
                 "min_fw": "5.05",
                 "cover_url": null
             };
@@ -36,20 +33,17 @@ app.get('/games.json', async (req, res) => {
 
         res.json(fpkgiData);
     } catch (err) {
-        res.status(500).json({ error: "Failed to fetch manifest", details: err.message });
+        res.status(500).json({ error: err.message });
     }
 });
 
 // 2. The Download Redirector (RD Bridge)
-app.get('/dl/:id', async (req, res) => {
+app.get('/dl/:id/:filename', async (req, res) => {
     try {
         const response = await axios.get(MANIFEST_URL);
         const game = response.data[req.params.id];
-        
-        // Grab the first 1fichier link from your manifest structure
         const oneFichierUrl = game.versions[0].downloads[0].url;
 
-        // Unrestrict via Real-Debrid
         const params = new URLSearchParams();
         params.append('link', oneFichierUrl);
 
@@ -63,12 +57,12 @@ app.get('/dl/:id', async (req, res) => {
             console.log(`Redirecting to: ${rdResponse.data.download}`);
             res.redirect(rdResponse.data.download);
         } else {
-            res.status(500).send("Real-Debrid failed to unrestrict link.");
+            res.status(500).send("Real-Debrid failed to unrestrict.");
         }
     } catch (err) {
         res.status(500).send("Error: " + err.message);
     }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
