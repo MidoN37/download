@@ -17,7 +17,6 @@ app.get('/games.json', async (req, res) => {
         rawData.forEach((item, index) => {
             const proxyUrl = `${RENDER_URL}/dl/${index}/game.pkg`;
             
-            // Extract CUSA from version_name (e.g., "CUSA00856 - USA")
             let titleId = "CUSA00000";
             try {
                 const version = item.versions[0].version_name;
@@ -25,13 +24,14 @@ app.get('/games.json', async (req, res) => {
                 if (match) titleId = match[0];
             } catch(e) {}
 
+            // EVERYTHING MUST BE A STRING
             fpkgiData["DATA"][proxyUrl] = {
-                "title_id": titleId,
+                "title_id": String(titleId),
                 "region": "USA",
-                "name": item.title,
+                "name": String(item.title),
                 "version": "01.00",
                 "release": "11-15-2014",
-                "size": 1000000000,
+                "size": "1000000000", // Must be in quotes
                 "min_fw": "null",
                 "cover_url": "null"
             };
