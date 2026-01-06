@@ -9,7 +9,6 @@ const RENDER_URL = "https://download-dr45.onrender.com";
 
 app.get('/', (req, res) => res.send('Bridge Active.'));
 
-// 1. Convert GitHub manifest to FPKGi format
 app.get('/games.json', async (req, res) => {
     try {
         const response = await axios.get(MANIFEST_URL);
@@ -17,17 +16,25 @@ app.get('/games.json', async (req, res) => {
         const fpkgiData = { "DATA": {} };
 
         rawData.forEach((item, index) => {
-            // Hardcoded URL with .pkg extension
             const proxyUrl = `${RENDER_URL}/dl/${index}/game.pkg`;
             
+            // Extract CUSA from version_name (e.g., "CUSA00856 - USA")
+            let titleId = "CUSA00000";
+            try {
+                const version = item.versions[0].version_name;
+                const match = version.match(/CUSA\d+/);
+                if (match) titleId = match[0];
+            } catch(e) {}
+
             fpkgiData["DATA"][proxyUrl] = {
-                "name": item.title,
+                "title_id": titleId,
                 "region": "USA",
-                "version": "1.00",
-                "release": "2024",
-                "size": 1000000000, // 1GB in bytes (Integer)
-                "min_fw": "5.05",
-                "cover_url": null
+                "name": item.title,
+                "version": "01.00",
+                "release": "11-15-2014",
+                "size": 1000000000,
+                "min_fw": "null",
+                "cover_url": "null"
             };
         });
 
@@ -37,32 +44,30 @@ app.get('/games.json', async (req, res) => {
     }
 });
 
-// 2. The Download Redirector (RD Bridge)
 app.get('/dl/:id/:filename', async (req, res) => {
     try {
         const response = await axios.get(MANIFEST_URL);
         const game = response.data[req.params.id];
         const oneFichierUrl = game.versions[0].downloads[0].url;
-
         const params = new URLSearchParams();
         params.append('link', oneFichierUrl);
-
         const rdResponse = await axios.post(
             "https://api.real-debrid.com/rest/1.0/unrestrict/link",
             params,
             { headers: { "Authorization": `Bearer ${RD_API_KEY}` } }
         );
-
         if (rdResponse.data && rdResponse.data.download) {
-            console.log(`Redirecting to: ${rdResponse.data.download}`);
             res.redirect(rdResponse.data.download);
         } else {
-            res.status(500).send("Real-Debrid failed to unrestrict.");
+            res.status(500).send("RD Fail");
         }
     } catch (err) {
-        res.status(500).send("Error: " + err.message);
+        res.status(500).send(err.message);
     }
 });
+
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
