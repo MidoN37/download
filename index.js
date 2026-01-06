@@ -2,7 +2,6 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 
-// --- CONFIG ---
 const RD_API_KEY = "XP3FCTDMJJR3XCE2MRY6S77SGLVVWCZYDOWN44MFYDLG3T4RCSNQ"; 
 const MANIFEST_URL = "https://raw.githubusercontent.com/MidoN37/download/master/manifest.json";
 const RENDER_URL = "https://download-dr45.onrender.com";
@@ -65,9 +64,6 @@ app.get('/dl/:id/:filename', async (req, res) => {
         res.status(500).send(err.message);
     }
 });
-
-const PORT = process.env.PORT || 10000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
